@@ -1,0 +1,103 @@
+{
+"id": "f22_raptor",
+"name": "F-22 Raptor (Lockheed Martin F-22 Raptor)",
+"year": 2005,
+"manufacturer": "Lockheed Martin",
+"country": "United States",
+"type": "Air Superiority Fighter",
+"specs": {
+"length": 18.92,
+"wingspan": 13.56,
+"height": 5.08,
+"emptyWeight": 19700,
+"maxSpeed": 2410,
+"range": 2960,
+"ceiling": 19800,
+"thrust": 35000,
+"fuelCapacityInternal": 8200,
+"fuelCapacityExternal": 11900,
+"crew": 1
+},
+"parts": [
+// ===== FUSELAGEM PRINCIPAL =====
+{ "id": "fus_main", "label": "Fuselagem Principal", "type": "fuselage", "x": 0, "y": 0, "z": 0, "w": 19, "h": 2.5, "d": 1.8, "color": "#5A6872", "opacity": 1.0 },
+{ "id": "fus_nose", "label": "Fuselagem Frontal", "type": "fuselage", "x": 8, "y": 0.1, "z": -0.1, "w": 4, "h": 2.2, "d": 1.6, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "fus_rear", "label": "Fuselagem Traseira", "type": "fuselage", "x": -8, "y": 0, "z": 0, "w": 6, "h": 2.6, "d": 1.9, "color": "#5A6872", "opacity": 1.0 },
+{ "id": "fus_tail", "label": "Cone de Cauda", "type": "fuselage", "x": -13, "y": 0, "z": 0, "w": 4, "h": 2.0, "d": 1.4, "color": "#4A5862", "opacity": 1.0 },
+// ===== ASAS PRINCIPAIS =====
+{ "id": "wing_main_r", "label": "Asa Principal Direita", "type": "wing", "x": -1, "y": 0, "z": 1.9, "w": 12, "h": 0.4, "d": 5.8, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "wing_main_l", "label": "Asa Principal Esquerda", "type": "wing", "x": -1, "y": 0, "z": -7.7, "w": 12, "h": 0.4, "d": 5.8, "color": "#4A5862", "opacity": 1.0 },
+// ===== BORDAS DE ATAQUE (LEADING EDGE) =====
+{ "id": "leading_edge_r", "label": "Borda Ataque Dir", "type": "leading_edge", "x": -1, "y": 0.3, "z": 2.2, "w": 10, "h": 0.3, "d": 5.2, "color": "#3A4852", "opacity": 1.0 },
+{ "id": "leading_edge_l", "label": "Borda Ataque Esq", "type": "leading_edge", "x": -1, "y": 0.3, "z": -7.4, "w": 10, "h": 0.3, "d": 5.2, "color": "#3A4852", "opacity": 1.0 },
+// ===== BORDAS DE FUGA (TRAILING EDGE) =====
+{ "id": "trailing_flap_r", "label": "Flape Traseiro Dir", "type": "flap", "x": -4, "y": 0.1, "z": 2.0, "w": 6, "h": 0.25, "d": 4.5, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "trailing_flap_l", "label": "Flape Traseiro Esq", "type": "flap", "x": -4, "y": 0.1, "z": -6.5, "w": 6, "h": 0.25, "d": 4.5, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "aileron_r", "label": "Aileron Direito", "type": "aileron", "x": -6, "y": 0.1, "z": 2.0, "w": 4, "h": 0.2, "d": 3.5, "color": "#5A6872", "opacity": 1.0 },
+{ "id": "aileron_l", "label": "Aileron Esquerdo", "type": "aileron", "x": -6, "y": 0.1, "z": -5.5, "w": 4, "h": 0.2, "d": 3.5, "color": "#5A6872", "opacity": 1.0 },
+// ===== EXTENSÕES DE BORDA DE ATAQUE (LERX) =====
+{ "id": "lerx_r", "label": "LERX Direito", "type": "lerx", "x": 4, "y": 0.4, "z": 1.2, "w": 3, "h": 0.5, "d": 2.5, "color": "#3A4852", "opacity": 1.0 },
+{ "id": "lerx_l", "label": "LERX Esquerdo", "type": "lerx", "x": 4, "y": 0.4, "z": -3.7, "w": 3, "h": 0.5, "d": 2.5, "color": "#3A4852", "opacity": 1.0 },
+// ===== DERIVAS VERTICAIS =====
+{ "id": "vert_stab_r", "label": "Deriva Vertical Dir", "type": "tail_v", "x": -7, "y": 1.5, "z": 1.0, "w": 4, "h": 4.0, "d": 0.4, "color": "#4A5862", "opacity": 1.0, "rotationZ": -25 },
+{ "id": "vert_stab_l", "label": "Deriva Vertical Esq", "type": "tail_v", "x": -7, "y": 1.5, "z": -1.4, "w": 4, "h": 4.0, "d": 0.4, "color": "#4A5862", "opacity": 1.0, "rotationZ": 25 },
+// ===== ESTABILIZADORES HORIZONTAIS =====
+{ "id": "horiz_stab_r", "label": "Estab Horizontal Dir", "type": "tail_h", "x": -7.5, "y": 0.5, "z": 1.8, "w": 5.5, "h": 0.35, "d": 3.2, "color": "#4A5862", "opacity": 1.0, "rotationZ": -5 },
+{ "id": "horiz_stab_l", "label": "Estab Horizontal Esq", "type": "tail_h", "x": -7.5, "y": 0.5, "z": -5.0, "w": 5.5, "h": 0.35, "d": 3.2, "color": "#4A5862", "opacity": 1.0, "rotationZ": 5 },
+// ===== ENTRADAS DE AR =====
+{ "id": "air_intake_r", "label": "Entrada Ar Dir", "type": "intake", "x": 1, "y": -0.3, "z": 1.4, "w": 6, "h": 1.8, "d": 1.2, "color": "#2A3842", "opacity": 1.0 },
+{ "id": "air_intake_l", "label": "Entrada Ar Esq", "type": "intake", "x": 1, "y": -0.3, "z": -2.6, "w": 6, "h": 1.8, "d": 1.2, "color": "#2A3842", "opacity": 1.0 },
+{ "id": "intake_ramp_r", "label": "Rampa Entrada Dir", "type": "ramp", "x": 2, "y": -0.1, "z": 1.4, "w": 3, "h": 0.3, "d": 1.0, "color": "#3A4852", "opacity": 1.0 },
+{ "id": "intake_ramp_l", "label": "Rampa Entrada Esq", "type": "ramp", "x": 2, "y": -0.1, "z": -2.4, "w": 3, "h": 0.3, "d": 1.0, "color": "#3A4852", "opacity": 1.0 },
+// ===== MOTORES =====
+{ "id": "engine_r", "label": "Motor F119-PW-100 Dir", "type": "engine", "x": -8, "y": -0.5, "z": 1.0, "w": 7, "h": 1.5, "d": 1.5, "color": "#1A1A1A", "opacity": 1.0 },
+{ "id": "engine_l", "label": "Motor F119-PW-100 Esq", "type": "engine", "x": -8, "y": -0.5, "z": -2.5, "w": 7, "h": 1.5, "d": 1.5, "color": "#1A1A1A", "opacity": 1.0 },
+{ "id": "afterburner_r", "label": "Pos-Queimador Dir", "type": "afterburner", "x": -12, "y": -0.5, "z": 1.0, "w": 3, "h": 1.3, "d": 1.3, "color": "#FF4500", "opacity": 0.8 },
+{ "id": "afterburner_l", "label": "Pos-Queimador Esq", "type": "afterburner", "x": -12, "y": -0.5, "z": -2.3, "w": 3, "h": 1.3, "d": 1.3, "color": "#FF4500", "opacity": 0.8 },
+{ "id": "nozzle_r", "label": "Bocal Motor Dir", "type": "nozzle", "x": -14, "y": -0.5, "z": 1.0, "w": 2, "h": 1.4, "d": 1.4, "color": "#333333", "opacity": 1.0, "thrustVectoring": true },
+{ "id": "nozzle_l", "label": "Bocal Motor Esq", "type": "nozzle", "x": -14, "y": -0.5, "z": -2.4, "w": 2, "h": 1.4, "d": 1.4, "color": "#333333", "opacity": 1.0, "thrustVectoring": true },
+// ===== COCKPIT E CANOPY =====
+{ "id": "cockpit_base", "label": "Base Cockpit", "type": "cockpit", "x": 5, "y": 0.2, "z": -0.9, "w": 2.5, "h": 1.0, "d": 1.6, "color": "#2A2A2A", "opacity": 1.0 },
+{ "id": "canopy", "label": "Canopy (Copa)", "type": "canopy", "x": 5.5, "y": 1.0, "z": -0.9, "w": 2.8, "h": 1.2, "d": 1.8, "color": "#87CEEB", "opacity": 0.6 },
+{ "id": "hud_mount", "label": "Suporte HUD", "type": "hud", "x": 5.8, "y": 0.8, "z": -0.9, "w": 0.8, "h": 0.4, "d": 0.8, "color": "#1A1A1A", "opacity": 1.0 },
+{ "id": "seat_eject", "label": "Assento Ejeção", "type": "seat", "x": 5, "y": 0.6, "z": -0.9, "w": 1.2, "h": 1.4, "d": 1.0, "color": "#4A4A4A", "opacity": 1.0 },
+// ===== NARIZ E SONAR =====
+{ "id": "nose_cone", "label": "Cone de Nariz", "type": "nose", "x": 9, "y": -0.1, "z": -0.6, "w": 3, "h": 1.5, "d": 1.3, "color": "#3A4852", "opacity": 1.0 },
+{ "id": "nose_tip", "label": "Ponta do Nariz", "type": "nose_tip", "x": 10.5, "y": 0, "z": -0.6, "w": 1, "h": 1.2, "d": 1.0, "color": "#2A3842", "opacity": 1.0 },
+{ "id": "pitot_tube", "label": "Tubo Pitot", "type": "pitot", "x": 10.8, "y": 0.8, "z": -0.6, "w": 0.3, "h": 0.3, "d": 0.3, "color": "#1A1A1A", "opacity": 1.0 },
+{ "id": "radar", "label": "Radar AN/APG-77", "type": "radar", "x": 9.5, "y": 0.2, "z": -0.6, "w": 1.5, "h": 1, "d": 1, "color": "#2A2A2A", "opacity": 1.0 },
+// ===== SISTEMA DE ARMAZENAMENTO EXTERNO =====
+{ "id": "pylon_r1", "label": "Pylon Direito 1", "type": "pylon", "x": 0, "y": -0.8, "z": 1.8, "w": 1.5, "h": 0.4, "d": 2.0, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "pylon_l1", "label": "Pylon Esquerdo 1", "type": "pylon", "x": 0, "y": -0.8, "z": -3.8, "w": 1.5, "h": 0.4, "d": 2.0, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "pylon_r2", "label": "Pylon Direito 2", "type": "pylon", "x": -3, "y": -0.8, "z": 1.8, "w": 1.2, "h": 0.4, "d": 1.8, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "pylon_l2", "label": "Pylon Esquerdo 2", "type": "pylon", "x": -3, "y": -0.8, "z": -3.6, "w": 1.2, "h": 0.4, "d": 1.8, "color": "#4A5862", "opacity": 1.0 },
+// ===== MÍSSEIS (AIM-120 AMRAAM) =====
+{ "id": "missile_r1", "label": "AMRAAM Direito 1", "type": "missile", "x": 0, "y": -1.4, "z": 1.8, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+{ "id": "missile_l1", "label": "AMRAAM Esquerdo 1", "type": "missile", "x": 0, "y": -1.4, "z": -2.0, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+{ "id": "missile_r2", "label": "AMRAAM Direito 2", "type": "missile", "x": -3, "y": -1.4, "z": 1.8, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+{ "id": "missile_l2", "label": "AMRAAM Esquerdo 2", "type": "missile", "x": -3, "y": -1.4, "z": -2.0, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+// ===== MÍSSEIS DE CURTO ALCANCE (AIM-9 SIDEWINDER) =====
+{ "id": "missile_side_r", "label": "Sidewinder Dir", "type": "missile", "x": -5, "y": -1.2, "z": 2.5, "w": 2.9, "h": 0.16, "d": 0.16, "color": "#7B7B7B", "opacity": 1.0 },
+{ "id": "missile_side_l", "label": "Sidewinder Esq", "type": "missile", "x": -5, "y": -1.2, "z": -2.66, "w": 2.9, "h": 0.16, "d": 0.16, "color": "#7B7B7B", "opacity": 1.0 },
+// ===== TANQUES EXTERNOS DE COMBUSTÍVEL =====
+{ "id": "fuel_tank_r", "label": "Tanque Combustível Dir", "type": "fuel_tank", "x": -2, "y": -1.0, "z": 3.5, "w": 4, "h": 0.8, "d": 0.8, "color": "#5A6872", "opacity": 1.0 },
+{ "id": "fuel_tank_l", "label": "Tanque Combustível Esq", "type": "fuel_tank", "x": -2, "y": -1.0, "z": -4.3, "w": 4, "h": 0.8, "d": 0.8, "color": "#5A6872", "opacity": 1.0 },
+// ===== BAIAS DE ARMAS INTERNAS (para configuração stealth) =====
+{ "id": "bay_main", "label": "Baia Armas Principal", "type": "weapon_bay", "x": 0, "y": -1, "z": -0.9, "w": 5, "h": 1, "d": 1.8, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "bay_side_r", "label": "Baia Lateral Dir", "type": "weapon_bay", "x": 2, "y": -0.8, "z": 1.5, "w": 2, "h": 0.8, "d": 1, "color": "#4A5862", "opacity": 1.0 },
+{ "id": "bay_side_l", "label": "Baia Lateral Esq", "type": "weapon_bay", "x": 2, "y": -0.8, "z": -2.5, "w": 2, "h": 0.8, "d": 1, "color": "#4A5862", "opacity": 1.0 },
+// ===== ARMAMENTO INTERNO =====
+{ "id": "cannon", "label": "Canhão M61A2 20mm", "type": "cannon", "x": 4, "y": 0.5, "z": 0.5, "w": 1.5, "h": 0.5, "d": 0.5, "color": "#1A1A1A", "opacity": 1.0 },
+{ "id": "missile_amraam_internal1", "label": "AIM-120 AMRAAM Interno 1", "type": "missile", "x": 0.5, "y": -1.2, "z": -0.9, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+{ "id": "missile_amraam_internal2", "label": "AIM-120 AMRAAM Interno 2", "type": "missile", "x": -0.5, "y": -1.2, "z": -0.9, "w": 3.6, "h": 0.2, "d": 0.2, "color": "#6B6B6B", "opacity": 1.0 },
+{ "id": "missile_side_internal_r", "label": "AIM-9 Sidewinder Interno Dir", "type": "missile", "x": 2, "y": -1.0, "z": 1.5, "w": 2.9, "h": 0.16, "d": 0.16, "color": "#7B7B7B", "opacity": 1.0 },
+{ "id": "missile_side_internal_l", "label": "AIM-9 Sidewinder Interno Esq", "type": "missile", "x": 2, "y": -1.0, "z": -1.66, "w": 2.9, "h": 0.16, "d": 0.16, "color": "#7B7B7B", "opacity": 1.0 },
+// ===== TREM DE POUSO =====
+{ "id": "lg_nose", "label": "Trem de Pouso Nariz", "type": "landing_gear", "x": 6, "y": -1.5, "z": -0.9, "w": 2, "h": 2.5, "d": 1, "color": "#333333", "opacity": 1.0 },
+{ "id": "lg_main_r", "label": "Trem Principal Dir", "type": "landing_gear", "x": -2, "y": -1.5, "z": 2, "w": 3, "h": 3, "d": 1.5, "color": "#333333", "opacity": 1.0 },
+{ "id": "lg_main_l", "label": "Trem Principal Esq", "type": "landing_gear", "x": -2, "y": -1.5, "z": -3.5, "w": 3, "h": 3, "d": 1.5, "color": "#333333", "opacity": 1.0 },
+// ===== OUTROS COMPONENTES =====
+{ "id": "refuel_receptacle", "label": "Receptáculo de Reabastecimento Aéreo", "type": "refuel", "x": 3, "y": 1.2, "z": -0.9, "w": 1, "h": 0.5, "d": 1, "color": "#3A4852", "opacity": 1.0 },
+{ "id": "avionics_bay", "label": "Baia de Avionics", "type": "avionics", "x": 4, "y": -0.5, "z": -0.9, "w": 2, "h": 1, "d": 1.2, "color": "#2A2A2A", "opacity": 1.0 }
+]
+}
