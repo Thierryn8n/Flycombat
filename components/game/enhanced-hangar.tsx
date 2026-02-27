@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { Loader2, Shield, Zap, Heart, Sword, Lock, Unlock, ShoppingCart, DollarSign, ChevronRight, ArrowUp } from "lucide-react"
 import UpgradePanel from "@/components/game/upgrade-panel"
 import { getGuestFlygold, getGuestPoints } from "@/lib/guest-storage"
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 
 // Dynamically import HangarScene (heavy 3D component)
 const HangarScene = dynamic(() => import("@/components/game/hangar-scene"), { 
@@ -64,6 +65,7 @@ export default function EnhancedHangar({ onAircraftSelect, initialAircraftId }: 
   const [purchasing, setPurchasing] = useState(false)
   const [showUpgrades, setShowUpgrades] = useState(false)
   const [guestPoints, setGuestPointsState] = useState<number>(0)
+  const [starting, setStarting] = useState(false)
 
   // Fetch data on mount
   useEffect(() => {
@@ -458,6 +460,28 @@ export default function EnhancedHangar({ onAircraftSelect, initialAircraftId }: 
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden select-none font-sans">
+      {/* Global Start Button (outside right panel) */}
+      <div className="absolute right-6 bottom-6 z-30 pointer-events-auto">
+        <button
+          onClick={async () => {
+            if (!selectedAircraft) return
+            const isOwned = selectedAircraft.is_default || ownedAircraftIds.has(selectedAircraft.id)
+            if (!isOwned) return
+            setStarting(true)
+            await handleEquip()
+            setStarting(false)
+            router.push("/play")
+          }}
+          disabled={!selectedAircraft || !(selectedAircraft.is_default || ownedAircraftIds.has(selectedAircraft?.id || "")) || starting}
+          className={`px-5 py-3 rounded-lg font-bold text-sm transition-all ${
+            !selectedAircraft || !(selectedAircraft.is_default || ownedAircraftIds.has(selectedAircraft?.id || "")) || starting
+              ? "bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700"
+              : "bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.5)]"
+          }`}
+        >
+          {starting ? "INICIANDO..." : "INICIAR JOGO"}
+        </button>
+      </div>
       
       {/* 3D SCENE BACKGROUND */}
       <div className="absolute inset-0 z-0">
@@ -610,40 +634,52 @@ export default function EnhancedHangar({ onAircraftSelect, initialAircraftId }: 
             <div className="space-y-4 mb-8">
               {/* Color Customization for Owned Aircraft */}
               {isOwned && (
-                <div className="mb-4 bg-slate-900/50 p-3 rounded-lg border border-slate-700">
-                    <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-bold text-slate-300 uppercase flex items-center gap-2">
-                           <div className="w-3 h-3 rounded-full bg-gradient-to-tr from-blue-400 to-purple-500" />
-                           Paint Job
-                        </span>
-                        <input 
-                           type="color" 
-                           value={selectedAircraft.custom_primary_color || "#64748b"}
-                           onChange={(e) => handleColorChange(e.target.value)}
-                           className="w-8 h-8 rounded cursor-pointer border-none bg-transparent"
-                        />
+                <div className="mb-3 bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-300 uppercase flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-gradient-to-tr from-blue-400 to-purple-500" />
+                      Paint Job
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="color"
+                        value={selectedAircraft.custom_primary_color || "#64748b"}
+                        onChange={(e) => handleColorChange(e.target.value)}
+                        className="w-7 h-7 rounded cursor-pointer border-none bg-transparent"
+                        title="Cor Primária"
+                      />
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <button className="px-2 py-1 rounded bg-blue-700 hover:bg-blue-600 text-white text-xs">
+                            Editar
+                          </button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-64 bg-slate-900 border border-slate-700 p-2">
+                          <div className="grid grid-cols-2 gap-2">
+                            {PART_GROUPS.map((g) => (
+                              <div key={g.key} className="flex items-center justify-between bg-slate-800/60 px-2 py-1 rounded">
+                                <span className="text-[10px] text-slate-300 uppercase tracking-wider">{g.label}</span>
+                                <input
+                                  type="color"
+                                  value={customColors[g.key] || "#64748b"}
+                                  onChange={(e) => handleCustomColorChange(g.key, e.target.value)}
+                                  className="w-7 h-7 rounded cursor-pointer border-none bg-transparent"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-2 flex justify-end">
+                            <button
+                              onClick={saveCustomColors}
+                              className="px-2 py-1 rounded bg-blue-700 hover:bg-blue-600 text-white text-xs"
+                            >
+                              Salvar
+                            </button>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 mt-1">
-                      {PART_GROUPS.map((g) => (
-                        <div key={g.key} className="flex items-center justify-between bg-slate-800/50 px-2 py-1 rounded border border-slate-700">
-                          <span className="text-[10px] text-slate-300 uppercase tracking-wider">{g.label}</span>
-                          <input
-                            type="color"
-                            value={customColors[g.key] || "#64748b"}
-                            onChange={(e) => handleCustomColorChange(g.key, e.target.value)}
-                            className="w-7 h-7 rounded cursor-pointer border-none bg-transparent"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-2 flex justify-end">
-                      <button
-                        onClick={saveCustomColors}
-                        className="px-2 py-1 rounded bg-blue-700 hover:bg-blue-600 text-white text-xs"
-                      >
-                        Salvar Cores
-                      </button>
-                    </div>
+                  </div>
                 </div>
               )}
               
@@ -682,10 +718,10 @@ export default function EnhancedHangar({ onAircraftSelect, initialAircraftId }: 
               {isOwned ? (
                 <button
                   onClick={handleEquip}
-                  className="w-full group relative overflow-hidden bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-lg transition-all transform hover:scale-[1.02] shadow-[0_0_20px_rgba(37,99,235,0.5)]"
+                  className="w-full group relative overflow-hidden bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-[0_0_15px_rgba(37,99,235,0.4)]"
                 >
                   <div className="relative z-10 flex items-center justify-center gap-2">
-                    <span>DEPLOY AIRCRAFT</span>
+                    <span>EQUIPAR</span>
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
