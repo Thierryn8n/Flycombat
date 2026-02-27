@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect, useRef } from "react"
+import { Suspense, useState, useCallback, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
@@ -41,7 +41,7 @@ function safeParseJson(value: unknown) {
   }
 }
 
-export default function AdminEditorPage() {
+function AdminEditorPageContent() {
   const [parts, setParts] = useState<PartWithUid[]>([])
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [styleClipboard, setStyleClipboard] = useState<Partial<AircraftPart> | null>(null)
@@ -946,5 +946,22 @@ export default function AdminEditorPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function AdminEditorPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-full flex items-center justify-center bg-background">
+          <div className="flex flex-col items-center gap-3">
+            <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">Carregando editor...</span>
+          </div>
+        </div>
+      }
+    >
+      <AdminEditorPageContent />
+    </Suspense>
   )
 }
