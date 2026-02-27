@@ -3,10 +3,10 @@
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 
-export type UpgradeType = "speed" | "weapons" | "resistance" | "autoaim"
+type UpgradeType = "speed" | "weapons" | "resistance" | "autoaim"
 
 // Costs and Increments configuration
-export const UPGRADE_CONFIG = {
+const UPGRADE_CONFIG = {
   speed: { cost: 100, increment: 0.10 }, // +10% Speed
   weapons: { cost: 150, increment: 0.15 }, // +15% Damage
   resistance: { cost: 120, increment: 0.10 }, // +10% Health
