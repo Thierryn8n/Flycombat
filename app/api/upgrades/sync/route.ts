@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { NextResponse } from 'next/server';
-import { purchaseUpgrade, UpgradeType, UPGRADE_CONFIG } from '@/app/actions/upgrades';
+import { purchaseUpgrade } from '@/app/actions/upgrades';
+import { UPGRADE_CONFIG, type UpgradeType } from '@/lib/upgrades';
 
 export async function POST(request: Request) {
   try {

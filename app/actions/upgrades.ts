@@ -2,16 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
-
-type UpgradeType = "speed" | "weapons" | "resistance" | "autoaim"
-
-// Costs and Increments configuration
-const UPGRADE_CONFIG = {
-  speed: { cost: 100, increment: 0.10 }, // +10% Speed
-  weapons: { cost: 150, increment: 0.15 }, // +15% Damage
-  resistance: { cost: 120, increment: 0.10 }, // +10% Health
-  autoaim: { cost: 200, increment: 0.05, base: 0.20 }, // Base 20%, +5% per level
-}
+import { UPGRADE_CONFIG, type UpgradeType } from "@/lib/upgrades"
 
 export async function purchaseUpgrade(aircraftId: string, upgradeType: UpgradeType) {
   const supabase = await createClient()
