@@ -1,4 +1,4 @@
-\"use client\"
+"use client"
 
 import { useEffect, useState } from \"react\"
 import { startCheckoutSession } from \"@/app/actions/stripe\"
@@ -17,13 +17,17 @@ export default function FlyGoldClient() {
   const [guestPoints, setGuestPoints] = useState<number>(getGuestPoints())
   const [convertInput, setConvertInput] = useState<string>(\"10000\")
   const [converting, setConverting] = useState<boolean>(false)
+  const hasSupabaseEnv = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
 
   useEffect(() => {
+    if (!hasSupabaseEnv) return
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUserId(user?.id || null)
     })
-  }, [])
+  }, [hasSupabaseEnv])
 
   async function buy(id: string) {
     setStatus(\"Gerando sessão de pagamento...\")
